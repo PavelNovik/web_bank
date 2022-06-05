@@ -61,3 +61,27 @@ btnScrollTo.addEventListener('click', function (e) {
 
   section1.scrollIntoView({ behavior: 'smooth' });
 });
+
+// Smooth page navigation (soft scroll)
+
+// Bad practise becouse every link has own eventListener and use much memory
+// document.querySelectorAll('.nav__link').forEach(function (htmlElement) {
+//   htmlElement.addEventListener('click', function (e) {
+//     e.preventDefault();
+//     const href = this.getAttribute('href');
+//     console.log(href);
+//     document.querySelector(href).scrollIntoView({ behavior: 'smooth' });
+//   });
+// });
+
+// 1. Добавляем event listener для общего родителя
+document.querySelector('.nav__links').addEventListener('click', function (e) {
+  e.preventDefault();
+  // 2. Определить target элемент
+  console.log(e.target);
+  if (e.target.classList.contains('nav__link')) {
+    const href = e.target.getAttribute('href');
+    console.log(href);
+    document.querySelector(href).scrollIntoView({ behavior: 'smooth' });
+  }
+});
