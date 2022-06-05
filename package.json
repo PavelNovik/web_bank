@@ -1,0 +1,22 @@
+{
+  "name": "startercode",
+  "version": "1.0.0",
+  "description": "This web app is web site for Bank",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "parcel index.html --open --port 1116",
+    "build": "parcel build index.html --out-dir=build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PavelNovik/web_bank.git"
+  },
+  "keywords": [],
+  "author": "Pavel Novik <brn2befree@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PavelNovik/web_bank/issues"
+  },
+  "homepage": "https://github.com/PavelNovik/web_bank#readme"
+}
