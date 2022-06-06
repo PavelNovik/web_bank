@@ -108,3 +108,41 @@ tabContainer.addEventListener('click', function (e) {
     .querySelector(`.operations__content--${clickedButton.dataset.tab}`)
     .classList.add('operations__content--active');
 });
+
+// Анимация потускнения на панели навигации
+
+// function navLinksHoverAnimation(e, opacity) {
+function navLinksHoverAnimation(e) {
+  // console.log(this, e.currentTarget);
+  if (e.target.classList.contains('nav__link')) {
+    const linkOver = e.target;
+    // console.log(linkOver);
+    const siblingLinks = linkOver
+      .closest('.nav__links')
+      .querySelectorAll('.nav__link');
+    const logo = linkOver.closest('.nav').querySelector('img');
+    const logoText = linkOver.closest('.nav').querySelector('.nav__text');
+    // console.log(siblingLinks, logo, logoText);
+    siblingLinks.forEach(el => {
+      if (el !== linkOver) {
+        // el.style.opacity = opacity;
+        el.style.opacity = this;
+      }
+      // logo.style.opacity = opacity;
+      logo.style.opacity = this;
+      // logoText.style.opacity = opacity;
+      logoText.style.opacity = this;
+    });
+  }
+}
+
+const nav = document.querySelector('.nav');
+// nav.addEventListener('mouseover', function (e) {
+//   navLinksHoverAnimation(e, 0.5);
+// });
+// Work with argument with bind() / this
+nav.addEventListener('mouseover', navLinksHoverAnimation.bind(0.5));
+// nav.addEventListener('mouseout', function (e) {
+//   navLinksHoverAnimation(e, 1);
+// });
+nav.addEventListener('mouseout', navLinksHoverAnimation.bind(1));
