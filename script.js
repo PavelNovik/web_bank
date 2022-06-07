@@ -98,10 +98,10 @@ tabContainer.addEventListener('click', function (e) {
   if (!clickedButton) return;
 
   // Активная вкладка
-  tabs.forEach((tab) => tab.classList.remove('operations__tab--active'));
+  tabs.forEach(tab => tab.classList.remove('operations__tab--active'));
   clickedButton.classList.add('operations__tab--active');
   // Активный контент
-  tabContents.forEach((content) =>
+  tabContents.forEach(content =>
     content.classList.remove('operations__content--active')
   );
   document
@@ -123,7 +123,7 @@ function navLinksHoverAnimation(e) {
     const logo = linkOver.closest('.nav').querySelector('img');
     const logoText = linkOver.closest('.nav').querySelector('.nav__text');
     // console.log(siblingLinks, logo, logoText);
-    siblingLinks.forEach((el) => {
+    siblingLinks.forEach(el => {
       if (el !== linkOver) {
         // el.style.opacity = opacity;
         el.style.opacity = this;
@@ -214,3 +214,27 @@ allSections.forEach(function (section) {
   sectionObserver.observe(section);
   section.classList.add('section--hidden');
 });
+
+// Имплементация Lazy loading для загрузки изображений
+const lazyImages = document.querySelectorAll('img[data-src]');
+// console.log(lazyImages);
+
+const loadImages = function (entries, observer) {
+  const entry = entries[0];
+  // console.log(entry);
+  if (!entry.isIntersecting) return;
+  // Меняем изображение на изображение с высоким разрешением
+  entry.target.src = entry.target.dataset.src;
+  // entry.target.classList.remove('lazy-img');
+
+  entry.target.addEventListener('load', function () {
+    entry.target.classList.remove('lazy-img');
+  });
+  observer.unobserve(entry.target);
+};
+
+const lazyImagesObserver = new IntersectionObserver(loadImages, {
+  root: null,
+  threshold: 0.7,
+});
+lazyImages.forEach(image => lazyImagesObserver.observe(image));
