@@ -98,10 +98,10 @@ tabContainer.addEventListener('click', function (e) {
   if (!clickedButton) return;
 
   // Активная вкладка
-  tabs.forEach(tab => tab.classList.remove('operations__tab--active'));
+  tabs.forEach((tab) => tab.classList.remove('operations__tab--active'));
   clickedButton.classList.add('operations__tab--active');
   // Активный контент
-  tabContents.forEach(content =>
+  tabContents.forEach((content) =>
     content.classList.remove('operations__content--active')
   );
   document
@@ -123,7 +123,7 @@ function navLinksHoverAnimation(e) {
     const logo = linkOver.closest('.nav').querySelector('img');
     const logoText = linkOver.closest('.nav').querySelector('.nav__text');
     // console.log(siblingLinks, logo, logoText);
-    siblingLinks.forEach(el => {
+    siblingLinks.forEach((el) => {
       if (el !== linkOver) {
         // el.style.opacity = opacity;
         el.style.opacity = this;
@@ -146,3 +146,18 @@ nav.addEventListener('mouseover', navLinksHoverAnimation.bind(0.5));
 //   navLinksHoverAnimation(e, 1);
 // });
 nav.addEventListener('mouseout', navLinksHoverAnimation.bind(1));
+
+// Sticky Navigation
+const section1Coords = section1.getBoundingClientRect();
+console.log(section1Coords);
+
+window.addEventListener('scroll', function (e) {
+  // console.log(e);
+  // console.log(window.scrollY);
+  // const navBar = e.target.querySelector('.nav');
+  if (window.scrollY >= section1Coords.top) {
+    nav.classList.add('sticky');
+  } else {
+    nav.classList.remove('sticky');
+  }
+});
