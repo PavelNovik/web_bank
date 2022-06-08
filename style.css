@@ -361,18 +361,23 @@ h4 {
 .operations__icon--1 {
   background-color: var(--color-second-opacity);
 }
+
 .operations__icon--2 {
   background-color: var(--color-first-opacity);
 }
+
 .operations__icon--3 {
   background-color: var(--color-third-opacity);
 }
+
 .operations__icon--1 svg {
   fill: var(--color-second-darker);
 }
+
 .operations__icon--2 svg {
   fill: var(--color-first);
 }
+
 .operations__icon--3 svg {
   fill: var(--color-third);
 }
@@ -400,7 +405,7 @@ h4 {
   transition: transform 1s;
 }
 
-.slide > img {
+.slide>img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -410,7 +415,7 @@ h4 {
   position: absolute;
   top: 50%;
   z-index: 10;
-
+  padding-bottom: 0.6rem;
   border: none;
   background: rgba(255, 255, 255, 0.7);
   font-family: inherit;
