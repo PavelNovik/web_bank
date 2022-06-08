@@ -37,18 +37,18 @@ const section1 = document.querySelector('#section--1');
 
 btnScrollTo.addEventListener('click', function (e) {
   const section1Coords = section1.getBoundingClientRect();
-  console.log(section1Coords);
-  console.log(e.target.getBoundingClientRect());
-  console.log(
-    'Текущее прокручивание: x, y',
-    window.pageXOffset,
-    window.pageYOffset
-  );
-  console.log(
-    'Ширина и высота viewport',
-    document.documentElement.clientWidth,
-    document.documentElement.clientHeight
-  );
+  // console.log(section1Coords);
+  // console.log(e.target.getBoundingClientRect());
+  // console.log(
+  //   'Текущее прокручивание: x, y',
+  //   window.pageXOffset,
+  //   window.pageYOffset
+  // );
+  // console.log(
+  //   'Ширина и высота viewport',
+  //   document.documentElement.clientWidth,
+  //   document.documentElement.clientHeight
+  // );
   // window.scrollTo(
   // section1Coords.left + window.pageXOffset,
   // section1Coords.top + window.pageYOffset
@@ -78,10 +78,10 @@ btnScrollTo.addEventListener('click', function (e) {
 document.querySelector('.nav__links').addEventListener('click', function (e) {
   e.preventDefault();
   // 2. Определить target элемент
-  console.log(e.target);
+  // console.log(e.target);
   if (e.target.classList.contains('nav__link')) {
     const href = e.target.getAttribute('href');
-    console.log(href);
+    // console.log(href);
     document.querySelector(href).scrollIntoView({ behavior: 'smooth' });
   }
 });
@@ -93,15 +93,15 @@ const tabContents = document.querySelectorAll('.operations__content');
 
 tabContainer.addEventListener('click', function (e) {
   const clickedButton = e.target.closest('.operations__tab');
-  console.log(clickedButton);
+  // console.log(clickedButton);
   // Guard clause - пункт охраны
   if (!clickedButton) return;
 
   // Активная вкладка
-  tabs.forEach((tab) => tab.classList.remove('operations__tab--active'));
+  tabs.forEach(tab => tab.classList.remove('operations__tab--active'));
   clickedButton.classList.add('operations__tab--active');
   // Активный контент
-  tabContents.forEach((content) =>
+  tabContents.forEach(content =>
     content.classList.remove('operations__content--active')
   );
   document
@@ -123,7 +123,7 @@ function navLinksHoverAnimation(e) {
     const logo = linkOver.closest('.nav').querySelector('img');
     const logoText = linkOver.closest('.nav').querySelector('.nav__text');
     // console.log(siblingLinks, logo, logoText);
-    siblingLinks.forEach((el) => {
+    siblingLinks.forEach(el => {
       if (el !== linkOver) {
         // el.style.opacity = opacity;
         el.style.opacity = this;
@@ -237,7 +237,7 @@ const lazyImagesObserver = new IntersectionObserver(loadImages, {
   root: null,
   threshold: 0.7,
 });
-lazyImages.forEach((image) => lazyImagesObserver.observe(image));
+lazyImages.forEach(image => lazyImagesObserver.observe(image));
 
 // Create slider
 const slides = document.querySelectorAll('.slide');
@@ -265,7 +265,7 @@ createDots();
 const activateCurrentDot = function (slide) {
   document
     .querySelectorAll('.dots__dot')
-    .forEach((dot) => dot.classList.remove('dots__dot--active'));
+    .forEach(dot => dot.classList.remove('dots__dot--active'));
   document
     .querySelector(`.dots__dot[data-slide = "${slide}"]`)
     .classList.add('dots__dot--active');
@@ -342,16 +342,16 @@ dotsContainer.addEventListener('click', function (e) {
 
 // Lifecycle DOM Events
 
-document.addEventListener('DOMContentLoaded', function (e) {
-  console.log(e);
-});
+// document.addEventListener('DOMContentLoaded', function (e) {
+//   console.log(e);
+// });
 
-window.addEventListener('load', function (e) {
-  console.log(e);
-});
+// window.addEventListener('load', function (e) {
+//   console.log(e);
+// });
 
-window.addEventListener('beforeunload', function (e) {
-  e.preventDefault();
-  console.log(e);
-  e.returnValue = '';
-});
+// window.addEventListener('beforeunload', function (e) {
+//   e.preventDefault();
+//   console.log(e);
+//   e.returnValue = '';
+// });
